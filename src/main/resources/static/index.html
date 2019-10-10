@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="emailsApp">
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Emails</title>
+
+    <link rel="stylesheet" href="normalize.css">
+
+    <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script defer src="app.js"></script>
+    
+</head>
+
+<body ng-controller="mainController as vm">
+
+  <div class="container">
+    <form name="form" ng-submit="vm.submit(e)">
+        <input type="email" ng-model="vm.input" id="email-input" placeholder="email" />
+        <button type="submit" ng-show="vm.input && form.$valid">Save</button>
+      </form>
+      <div ng-repeat="item in vm.items track by item.id">
+        <p class="email-preview" ng-bind="item.email"></p>
+      </div>
+  </div>
+</body>
+
+<style>
+html, body {
+	height: 100%;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 3rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#email-input:invalid {
+  border: 2px solid red;
+}
+
+.email-preview {
+  font-size: 20px;
+}
+
+input, button {
+  padding: 1rem;
+  border: 1px solid black;
+  font-size: 20px;
+  border-radius: 0.25rem;
+}
+
+
+</style>
+</html>
